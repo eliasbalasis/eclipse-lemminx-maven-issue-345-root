@@ -6,7 +6,7 @@
 
 	<groupId>mygroup</groupId>
 	<artifactId>eclipse-lemminx-maven-issue-345.root</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 
 	<packaging>pom</packaging>
 
@@ -49,7 +49,17 @@
 		<version.log4j-bom>2.18.0</version.log4j-bom>
 
 		<net.upperlimit.root.property1>test3</net.upperlimit.root.property1>
+
+		<!--
+		MUST BE IDENTICAL TO ${project.version}
+		-->
+		<version.root>0.0.2-SNAPSHOT</version.root>
+
 	</properties>
+
+	<modules>
+		<module>support</module>
+	</modules>
 
 	<dependencyManagement>
 		<dependencies>
