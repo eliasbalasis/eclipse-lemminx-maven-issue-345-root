@@ -52,6 +52,12 @@
 		<net.upperlimit.root.property1>test3</net.upperlimit.root.property1>
 
 		<!--
+		Maven CI Friendly Versions
+		-->
+		<version.flatten-maven-plugin>1.6.0</version.flatten-maven-plugin>
+		<version.versions-maven-plugin>2.16.2</version.versions-maven-plugin>
+
+		<!--
 		MUST BE IDENTICAL TO ${project.version}
 		-->
 		<version.root>0.0.2-SNAPSHOT</version.root>
@@ -96,6 +102,19 @@
 					<artifactId>m2cachecleanup</artifactId>
 					<version>${version.m2cachecleanup}</version>
 				</plugin>
+				<!--
+				Maven CI Friendly Versions
+				-->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>${version.versions-maven-plugin}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>flatten-maven-plugin</artifactId>
+					<version>${version.flatten-maven-plugin}</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -129,6 +148,34 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<!--
+			Maven CI Friendly Versions
+			-->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>flatten-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>flatten</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>flatten</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>flatten.clean</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<updatePomFile>true</updatePomFile>
+					<keepCommentsInPom>true</keepCommentsInPom>
+					<flattenMode>resolveCiFriendliesOnly</flattenMode>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
