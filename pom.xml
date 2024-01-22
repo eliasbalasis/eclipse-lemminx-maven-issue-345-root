@@ -52,11 +52,6 @@
 		<net.upperlimit.root.property1>test3</net.upperlimit.root.property1>
 
 		<!--
-		Maven CI Friendly Versions
-		-->
-		<revision>0.0.2-SNAPSHOT</revision>
-
-		<!--
 		MUST BE IDENTICAL TO ${project.version}
 		-->
 		<version.root>0.0.2-SNAPSHOT</version.root>
